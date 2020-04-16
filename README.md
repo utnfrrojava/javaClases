@@ -11,6 +11,9 @@ Para notificaciones de último momento pueden utilizar el grupo de Telegram al c
 
 Se recomienda el uso de [usernames](https://telegram.org/faq#usernames-and-t-me) para quienes quieran mantener su número telefónico privado.
 
+## Trabajo práctico
+El detalle de las condiciones, requerimientos, criterio de evaluación y entregas del TP pueden verlo en este [link](./tp/README.md)
+
 ## Condición Alumnos
 Aquí se agregará un link a la planilla de seguimiento de la condición de cada alumno.
 
@@ -24,4 +27,3 @@ El archivo [recursos.md](https://github.com/utnfrrojava/java/blob/master/materia
 Los ejemplos y ejercicios de clase se encuentran en la carpeta [ejemplos](./ejemplos/).
 
 Ambas carpetas son workspace de eclipse pero fueron excluidos los archivos de eclipse para que fuera sencillo utilizarlo desde otros IDEs o versiones de eclipse.
-
