@@ -202,13 +202,14 @@ Enviarlo y esperar la autorización del enunciado por parte de los docentes. Una
   2. La entrega deberá hacerse enviando por email y telegram a los profesores la URL del tag de git.
 
   3. En el repositorio debe incluir:
+
     * El código de la aplicación/sistema
     * Un archivo README.md con lo mismo que el PDF de la entrega inicial.
     * Un archivo .sql con el dump de la base de datos
 
   4. A continuación se deberá pactar con el docente un fecha para la defensa.
 
-### 3.3 - Entrega Aprobación Directa
+### 3.4 - Entrega Aprobación Directa
 
   1. Para realizar la entrega deberá en primer lugar crear un tag en el repositori de git.
 
@@ -216,17 +217,20 @@ Enviarlo y esperar la autorización del enunciado por parte de los docentes. Una
   Crear usuarios para cada nivel de acceso que no permita crearse directamente en el sistema.
 
   2. La entrega deberá hacerse enviando por email y telegram a los profesores:
+
     * La URL del tag de git.
     * La URL para acceder al sitio publicado.
     * Las claves de usuario para acceder al sistema desarrollado
 
   3. En el repositorio debe incluir:
+
     * El código de la aplicación/sistema
     * Un archivo README.md con lo mismo que el PDF de la entrega inicial.
     * Un directorio **db** con un archivo .sql con el dump de la base de datos.
     * Un directorio **doc** con la [documentación requerida]
 
   5. A continuación se deberá pactar con el docente un fecha para la defensa. Donde deberá llevar:
+
     * La [documentación requerida] impresa.
     * CD o DVD con el código y documentación.
 
