@@ -16,6 +16,16 @@ public class Administrativo extends Empleado{
 		this.hsMes = hsMes;
 	}
 	
+	public Administrativo() {}
+	
+	public Administrativo(int dni, String nombre, String apellido, 
+			double sueldoBase,int hsExtra, int hsMes) {
+		super(dni,nombre,apellido,sueldoBase);
+		
+		this.setHsExtra(hsExtra);
+		this.setHsMes(hsMes);
+	}
+	
 	@Override
 	public double getSueldo() {
 		

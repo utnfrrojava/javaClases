@@ -38,4 +38,13 @@ public abstract class Empleado {
 	public String getDetalle() {
 		return this.getDni()+" - "+this.getApellido()+": "; 
 	}
+	
+	public Empleado() {}
+	
+	public Empleado(int dni, String nombre, String apellido, double sueldoBase) {
+		this.setDni(dni);
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		this.setSueldoBase(sueldoBase);
+	}
 }
