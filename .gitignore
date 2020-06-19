@@ -15,6 +15,9 @@ ejemplos/Ej11Email/resources/app.properties
 *.ear
 *.db
 
+# Whitelist connector/j #
+!/ejemplos/Ej4JDBC/lib/*.jar
+
 ######################
 # Windows
 ######################
