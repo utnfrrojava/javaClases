@@ -56,7 +56,7 @@ public class Menu {
 		System.out.println("search\t\tlistar por apellido"); //puede devolver varios
 		System.out.println("new\t\tcrea una nueva persona y asigna un rol existente");
 		System.out.println("edit\t\tbusca por tipo y nro de documento y actualiza todos los datos");
-		System.out.println("delete\t\tborra por tipo y nro de documento y actualiza todos los datos");
+		System.out.println("delete\t\tborra por tipo y nro de documento");
 		System.out.println();
 		System.out.print("comando: ");
 		return s.nextLine();
