@@ -9,7 +9,7 @@
 En caso que fallara la creación de la db o el usuario puede eliminarlps con el siguiente código y volver a intentarlo.
 
 ```sql
-DROP DATABASE `javaTest`;
+DROP DATABASE `java`;
 DROP USEr java@localhost;
 ```
 
@@ -21,5 +21,5 @@ DROP USEr java@localhost;
 5. Si usa git, agregar el .jar del conector como excepción al .gitignore, (adaptarlo al directorio) por ejemplo en este proyecto
 ```
 # Whitelist connector/j #
-!/ejemplos/Ej4JDBC/lib/*.jar
+!/ejemplos/*/lib/*.jar
 ```
