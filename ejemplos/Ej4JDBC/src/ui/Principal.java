@@ -17,7 +17,7 @@ public class Principal {
 		
 		recuperarTodos();
 		
-		//recuperarPorParametro();
+		recuperarPorParametro();
 
 		insertarNuevo();
 	}

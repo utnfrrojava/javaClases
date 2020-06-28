@@ -2,35 +2,8 @@
 
 ## Pasos para preparar la base de datos
 * Descargar e instalar mysql o uno de sus forks (mysql 8 o 5.7, mariadb 10.3, percona server 8 o 5.7)
-* Crear la base de datos javaTest con un manager o usando el siguiente código
-
-```sql
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `javaTest` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-
-USE `javaTest`;
-
-DROP TABLE IF EXISTS `persona`;
-
-CREATE TABLE `persona` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tipo_doc` varchar(255) NOT NULL,
-  `nro_doc` int NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `apellido` varchar(255) NOT NULL,
-  `estaHabilitado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `persona` VALUES (1,'dni',11111111,'John','Doe',1),(2,'dni',22222222,'Juan','Perez',0);
-```
-
-* Crear el usuario para conectarse
-
-```sql
-create user java@localhost identified by 'himitsu';
-
-grant select, insert, update, delete on javaTest.* to java@localhost;
-```
+* Crear la base de datos java con usando el código del archivo db/dbJava.sql del proyecto.
+* Crear el usuario java para conectarse usando el código del archivo db/userJava.sql del proyecto.
 
 ### En casos de falla
 En caso que fallara la creación de la db o el usuario puede eliminarlps con el siguiente código y volver a intentarlo.
