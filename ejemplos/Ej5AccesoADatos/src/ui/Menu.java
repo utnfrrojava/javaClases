@@ -36,6 +36,9 @@ public class Menu {
 			System.out.println(find());
 			break;
 		case "seach":
+	
+			break;
+		case "new":
 			
 			break;
 		case "edit":
