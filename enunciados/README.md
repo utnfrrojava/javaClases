@@ -36,4 +36,23 @@ Restricciones
 
 **Ejercicio 6**
 
-Resolver los ejercicios 4 y 5 usando ArrayList en lugar de Arrays.
+Resolver los ejercicios 4 y 5 usando LinkedList o ArrayList en lugar de Arrays.
+
+**Ejercicio 7**
+
+Completar el desarrolo del Ejemplo 5 de Acceso a Datos.
+Pueden encontrar el código en este ![link](../ejemplos/Ej5AccesoADatos)
+1. En primer lugar debe seguir estas ![instrucciones](../ejemplos/Ej5AccesoADatos/src/steps.md)
+2. Para ello usará los archivos del directorio ![db](../ejemplos/Ej5AccesoADatos/db) para crear la base de datos y usuario para el ejercicio.
+3. Luego debe completar la funcionalidad del ejercicio ![planteada en el menú](../ejemplos/Ej5AccesoADatos/src/ui/Menu.java) con los comandos
+      * search
+      * new
+      * edit
+      * delete
+4. Los comandos deben cumplir con la descripción indicada en el método getCommand() de la clase Menu.java
+5. Algunos como new se encuentran parcialmente implementados. Se recomienda seguir ese orden ya que la dificultad es incremental.
+6. Deben enfocarse en el uso de capas y de acceso a base de datos, no es necesario hacer validaciones de entrada de datos ni enfocarse en la estética de la entrada o salida de datos.
+7. Para más información sobre el ejercicio consultar estos videos:
+      * ![recorrido del ejemplo](https://youtu.be/Rj65U8Vupjs)
+      * ![enunciado](https://youtu.be/QTO1kfTv92A)
+8. Para una explicación más detallada de capas y jdbc pueden consultar los videos de esta lísta de reproducción: ![jdbc](https://www.youtube.com/playlist?list=PLm49vB0eFOFHWj_wQzXNL1pmYaI3jt10E)
