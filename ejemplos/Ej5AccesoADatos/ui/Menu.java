@@ -1,6 +1,7 @@
 package ui;
 
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import entities.*;
@@ -35,8 +36,8 @@ public class Menu {
 		case "find":
 			System.out.println(find());
 			break;
-		case "seach":
-	
+		case "search":
+			System.out.println(search());
 			break;
 		case "new":
 			
@@ -56,6 +57,7 @@ public class Menu {
 		System.out.println("Ingrese el comando según la opción que desee realizar");
 		System.out.println("list\t\tlistar todos");
 		System.out.println("find\t\tbuscar por tipo y nro de documento"); //solo debe devolver 1
+		//este toca hacer primero
 		System.out.println("search\t\tlistar por apellido"); //puede devolver varios
 		System.out.println("new\t\tcrea una nueva persona y asigna un rol existente");
 		System.out.println("edit\t\tbusca por tipo y nro de documento y actualiza todos los datos");
@@ -92,6 +94,19 @@ public class Menu {
 		d.setNro(s.nextLine());
 		
 		return ctrlLogin.getByDocumento(p);
+	}
+	
+	private LinkedList<Persona> search() {
+		System.out.println();
+		
+		Persona p=new Persona();
+		Documento d=new Documento();
+		p.setDocumento(d);
+		
+		System.out.println("Ingrese apellido: ");
+		p.setApellido(s.nextLine());
+		
+		return ctrlLogin.getByApellido(p);
 	}
 
 }

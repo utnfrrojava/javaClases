@@ -28,4 +28,9 @@ public class Login {
 		return dp.getByDocumento(per);
 		
 	}
+	
+	public LinkedList<Persona> getByApellido(Persona per){
+		return dp.getByApellido(per);
+	}
+	
 }

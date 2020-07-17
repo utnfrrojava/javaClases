@@ -10,7 +10,7 @@ public class DbConnector {
 	private String host="localhost";
 	private String port="3306";
 	private String user="java";
-	private String password="himitsu";
+	private String password="Himitsu8";
 	private String db="java";
 	private int conectados=0;
 	private Connection conn=null;
