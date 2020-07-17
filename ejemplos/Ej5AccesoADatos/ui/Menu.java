@@ -40,7 +40,7 @@ public class Menu {
 			System.out.println(search());
 			break;
 		case "new":
-			
+			System.out.println(newPersona());
 			break;
 		case "edit":
 			
@@ -57,8 +57,9 @@ public class Menu {
 		System.out.println("Ingrese el comando seg√∫n la opci√≥n que desee realizar");
 		System.out.println("list\t\tlistar todos");
 		System.out.println("find\t\tbuscar por tipo y nro de documento"); //solo debe devolver 1
-		//este toca hacer primero
 		System.out.println("search\t\tlistar por apellido"); //puede devolver varios
+
+		//este toca hacer NO LE AGREGO EL ROL
 		System.out.println("new\t\tcrea una nueva persona y asigna un rol existente");
 		System.out.println("edit\t\tbusca por tipo y nro de documento y actualiza todos los datos");
 		System.out.println("delete\t\tborra por tipo y nro de documento");
@@ -107,6 +108,45 @@ public class Menu {
 		p.setApellido(s.nextLine());
 		
 		return ctrlLogin.getByApellido(p);
+	}
+	
+	
+	private String newPersona() {
+		System.out.println();
+		
+		Persona p = new Persona();
+		Documento d=new Documento();
+		p.setDocumento(d);
+		
+		System.out.println("Ingrese tipo de documento: ");
+		d.setTipo(s.nextLine());
+		
+		System.out.println("Ingrese numero de dni: ");
+		d.setNro(s.nextLine());
+		
+		System.out.println("Ingrese nombre: ");
+		p.setNombre(s.nextLine());
+		
+		System.out.println("Ingrese apellido: ");
+		p.setApellido(s.nextLine());
+		
+		System.out.println("Ingrese email: ");
+		p.setEmail(s.nextLine());
+		
+		System.out.println("Ingrese telefono: ");
+		p.setTel(s.nextLine());
+		
+		System.out.println("øEstar· habilitado? 1-si / 2-no: ");
+		p.setHabilitado(Boolean.valueOf(s.nextLine()));
+		
+		System.out.println("Ingrese password: ");
+		p.setPassword(s.nextLine());
+		
+		ctrlLogin.addPersona(p);
+		
+		System.out.println();
+		String message = "Se ha registrado a "+p.getNombre()+" "+p.getApellido();
+		return message;
 	}
 
 }

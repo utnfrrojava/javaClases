@@ -33,4 +33,7 @@ public class Login {
 		return dp.getByApellido(per);
 	}
 	
+	public void addPersona(Persona p) {
+		dp.add(p);
+	}
 }
