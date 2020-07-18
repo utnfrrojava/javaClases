@@ -46,7 +46,7 @@ public class Menu {
 			System.out.println(editPersona());
 			break;
 		case "delete":
-			
+			System.out.println(eliminarPersona());
 			break;
 		default:
 			break;
@@ -61,8 +61,6 @@ public class Menu {
 
 		//NO LE AGREGUE EL ROL
 		System.out.println("new\t\tcrea una nueva persona y asigna un rol existente");
-		
-		//este toca hacer 
 		System.out.println("edit\t\tbusca por tipo y nro de documento y actualiza todos los datos");
 		System.out.println("delete\t\tborra por tipo y nro de documento");
 		System.out.println();
@@ -195,7 +193,18 @@ public class Menu {
 		
 		
 		return ctrlLogin.editPersona(pOld, p);
-		
 	}
 	
+	private String eliminarPersona() {
+		System.out.println();
+		Persona p=new Persona();
+		p=find();
+		
+		//aca hay que eliminar a la persona p
+		ctrlLogin.eliminarPersona(p);
+		
+		
+		String mensaje = "Se ha eliminado a la persona: "+p.getNombre()+" "+p.getApellido()+" con documento "+p.getDocumento().getTipo()+" "+p.getDocumento().getNro();
+		return mensaje;
+	}
 }

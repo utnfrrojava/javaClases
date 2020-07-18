@@ -227,7 +227,6 @@ public class DataPersona {
 	
 	
 	public Persona editPersona(Persona pOld, Persona p) {
-	//"update users set num_points = ? where first_name = ?"
 		
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
@@ -245,6 +244,32 @@ public class DataPersona {
 			
 			stmt.setString(7, pOld.getDocumento().getTipo());
 			stmt.setString(8, pOld.getDocumento().getNro());
+			
+			stmt.executeUpdate();
+			
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		return p;
+    }
+	
+public Persona eliminarPersona(Persona p) {
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"delete from persona where id=?"
+							);
+			stmt.setInt(1, p.getId());
 			
 			stmt.executeUpdate();
 			

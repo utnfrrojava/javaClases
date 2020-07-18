@@ -40,4 +40,8 @@ public class Login {
 	public Persona editPersona(Persona pOld, Persona p) {
 		return dp.editPersona(pOld, p);
 	}
+	
+	public void eliminarPersona(Persona p) {
+		dp.eliminarPersona(p);
+	}
 }
