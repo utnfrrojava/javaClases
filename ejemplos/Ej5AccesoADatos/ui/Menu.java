@@ -43,7 +43,7 @@ public class Menu {
 			System.out.println(newPersona());
 			break;
 		case "edit":
-			
+			System.out.println(editPersona());
 			break;
 		case "delete":
 			
@@ -59,8 +59,10 @@ public class Menu {
 		System.out.println("find\t\tbuscar por tipo y nro de documento"); //solo debe devolver 1
 		System.out.println("search\t\tlistar por apellido"); //puede devolver varios
 
-		//este toca hacer NO LE AGREGO EL ROL
+		//NO LE AGREGUE EL ROL
 		System.out.println("new\t\tcrea una nueva persona y asigna un rol existente");
+		
+		//este toca hacer 
 		System.out.println("edit\t\tbusca por tipo y nro de documento y actualiza todos los datos");
 		System.out.println("delete\t\tborra por tipo y nro de documento");
 		System.out.println();
@@ -149,4 +151,51 @@ public class Menu {
 		return message;
 	}
 
+	private Persona editPersona() {
+
+		Persona pOld = new Persona();
+		pOld=find();
+
+		Persona p = new Persona();
+		Documento d=new Documento();
+		p.setDocumento(d);
+		
+		System.out.println();
+		
+		System.out.println("Nombre actual: "+pOld.getNombre());
+		System.out.println("Apellido actual: "+pOld.getApellido());
+		System.out.println("Email actual: "+pOld.getEmail());
+		System.out.println("Telefono actual: "+pOld.getTel());
+		System.out.println("Estado habilitado actual: "+pOld.isHabilitado());
+		
+		System.out.println("Ingrese datos a editar (recuerde que el tipo y nro de dni no se pueden editar)");
+		System.out.println();
+		
+		d.setTipo(pOld.getDocumento().getTipo());
+		d.setNro(pOld.getDocumento().getNro());
+		p.setId(pOld.getId());
+		
+		System.out.println("Ingrese nombre: ");
+		p.setNombre(s.nextLine());
+		
+		System.out.println("Ingrese apellido: ");
+		p.setApellido(s.nextLine());
+		
+		System.out.println("Ingrese email: ");
+		p.setEmail(s.nextLine());
+		
+		System.out.println("Ingrese telefono: ");
+		p.setTel(s.nextLine());
+		
+		System.out.println("¿Estará habilitado? 1-si / 2-no: ");
+		p.setHabilitado(Boolean.valueOf(s.nextLine()));
+		
+		System.out.println("Ingrese password: ");
+		p.setPassword(s.nextLine());
+		
+		
+		return ctrlLogin.editPersona(pOld, p);
+		
+	}
+	
 }

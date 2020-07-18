@@ -36,4 +36,8 @@ public class Login {
 	public void addPersona(Persona p) {
 		dp.add(p);
 	}
+	
+	public Persona editPersona(Persona pOld, Persona p) {
+		return dp.editPersona(pOld, p);
+	}
 }

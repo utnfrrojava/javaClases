@@ -224,4 +224,41 @@ public class DataPersona {
 		
 		return pers;
 	}
+	
+	
+	public Persona editPersona(Persona pOld, Persona p) {
+	//"update users set num_points = ? where first_name = ?"
+		
+		PreparedStatement stmt= null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"update persona set nombre=?, apellido=?, email=?, password=?, tel=?, habilitado=? where tipo_doc=? and nro_doc=?"
+							);
+			stmt.setString(1, p.getNombre());
+			stmt.setString(2, p.getApellido());
+			stmt.setString(3, p.getEmail());
+			stmt.setString(4, p.getPassword());
+			stmt.setString(5, p.getTel());
+			stmt.setBoolean(6, p.isHabilitado());
+			
+			stmt.setString(7, pOld.getDocumento().getTipo());
+			stmt.setString(8, pOld.getDocumento().getNro());
+			
+			stmt.executeUpdate();
+			
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		return p;
+    }
 }
