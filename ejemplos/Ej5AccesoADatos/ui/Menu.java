@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 import entities.*;
 import logic.Login;
+import logic.PersonaLogic;
 
 public class Menu {
 	Scanner s=null;
 	Login ctrlLogin = new Login();
+	PersonaLogic pL = new PersonaLogic();
 
 	public void start() {
 		s = new Scanner(System.in);
@@ -94,7 +96,7 @@ public class Menu {
 		System.out.print("Nro doc: ");
 		d.setNro(s.nextLine());
 		
-		return ctrlLogin.getByDocumento(p);
+		return pL.getByDocumento(p);
 	}
 	
 	private LinkedList<Persona> search() {
@@ -107,7 +109,7 @@ public class Menu {
 		System.out.println("Ingrese apellido: ");
 		p.setApellido(s.nextLine());
 		
-		return ctrlLogin.getByApellido(p);
+		return pL.getByApellido(p);
 	}
 	
 	
@@ -142,7 +144,7 @@ public class Menu {
 		System.out.println("Ingrese password: ");
 		p.setPassword(s.nextLine());
 		
-		ctrlLogin.addPersona(p);
+		pL.addPersona(p);
 		
 		System.out.println();
 		String message = "Se ha registrado a "+p.getNombre()+" "+p.getApellido();
@@ -192,7 +194,7 @@ public class Menu {
 		p.setPassword(s.nextLine());
 		
 		
-		return ctrlLogin.editPersona(pOld, p);
+		return pL.editPersona(pOld, p);
 	}
 	
 	private String eliminarPersona() {
@@ -201,7 +203,7 @@ public class Menu {
 		p=find();
 		
 		//aca hay que eliminar a la persona p
-		ctrlLogin.eliminarPersona(p);
+		pL.eliminarPersona(p);
 		
 		
 		String mensaje = "Se ha eliminado a la persona: "+p.getNombre()+" "+p.getApellido()+" con documento "+p.getDocumento().getTipo()+" "+p.getDocumento().getNro();
