@@ -78,6 +78,11 @@ public class Persona {
 		return this.roles.containsKey(rolToCheck.getId());
 	}
 	
+	public HashMap<Integer, Rol> getAllRoles(){
+		return this.roles;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "\nPersona [id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido

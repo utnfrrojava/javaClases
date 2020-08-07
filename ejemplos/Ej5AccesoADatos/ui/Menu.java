@@ -336,14 +336,18 @@ public class Menu {
 		String mensaje;
 		System.out.println();
 		Rol r = new Rol();
+		RolLogic rL = new RolLogic();
 		Persona p = new Persona();
 		Documento d = new Documento();
 		
 		System.out.println("Ingrese el DNI de la persona a agregar Rol: ");
 		p.setDocumento(d);
+		d.setTipo("dni");
+		
 		d.setNro(s.nextLine());
 		
 		p = pL.getByDocumento(p);
+		//p.getAllRoles().clear(); //despues lo tengo que sacar
 		
 		System.out.println(rL.getAll());
 		
@@ -356,8 +360,13 @@ public class Menu {
 		}else {
 			mensaje = "La persona: "+ p.getNombre()+" "+ p.getApellido()+" ya posee el rol ingresado";
 		}*/
-		p.addRol(r);
-		mensaje = "Se ha asignado el rol: "+ r.getDescripcion() +" a la persona "+ p.getNombre()+ p.getApellido();
+		
+		rL.setRoles(p,r);
+		//p.addRol(r);
+		mensaje = "Se ha asignado el rol: "+ 
+		r.getDescripcion() +" a la persona "+ 
+				p.getNombre()+ 
+				p.getApellido();
 		return mensaje;
 	}
 }

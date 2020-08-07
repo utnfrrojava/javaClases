@@ -22,8 +22,12 @@ public class RolLogic {
 		return dr.getByDesc(rolToSearch);
 	}
 	
-	public void setRoles(Persona per) {
-		dr.setRoles(per);
+	public void setRoles(Persona per, Rol nuevoRol) {
+		if (!per.hasRol(nuevoRol) ) {
+			dr.setRolesDePersona(per, nuevoRol);
+			per.addRol(nuevoRol);			
+			}
+		
 	}
 	
 	public void add(Rol rol) {

@@ -170,6 +170,33 @@ public class DataRol {
 
 	}
 	
+	public void setRolesDePersona(Persona p, Rol r) {
+		PreparedStatement stmt= null;
+		try {
+			//llamar al método borrar todos los roles de la persona
+			
+			
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"insert into rol_persona values(?,?);");
+			stmt.setInt(1, p.getId());
+			
+			stmt.setInt(2, r.getId());
+			stmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	}
+	
 	public void update(Rol rol) {
 		PreparedStatement stmt= null;
 		try {
