@@ -137,7 +137,7 @@ public class DataPersona {
 		return p;
 	}
 	
-	public void add(Persona p) {
+	public Persona add(Persona p) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
@@ -151,9 +151,9 @@ public class DataPersona {
 			stmt.setString(3, p.getDocumento().getTipo());
 			stmt.setString(4, p.getDocumento().getNro());
 			stmt.setString(5, p.getEmail());
-			stmt.setString(5, p.getPassword());
-			stmt.setString(6, p.getTel());
-			stmt.setBoolean(7, p.isHabilitado());
+			stmt.setString(6, p.getPassword());
+			stmt.setString(7, p.getTel());
+			stmt.setBoolean(8, p.isHabilitado());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -173,6 +173,7 @@ public class DataPersona {
             	e.printStackTrace();
             }
 		}
+		return p;
     }
 	
 	public ArrayList<Persona> getByApellido(String apell) {

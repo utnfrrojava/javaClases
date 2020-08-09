@@ -40,7 +40,7 @@ public class Menu {
 			System.out.println(search());
 			break;
 		case "new":
-			
+			System.out.println("Persona agregada" + addPeople());
 			break;
 		case "edit":
 			
@@ -104,4 +104,49 @@ public class Menu {
 		
 	}
 
+	private Persona addPeople() {
+		System.out.println();
+		
+		Persona p = new Persona();
+		Documento d = new Documento();
+		
+		System.out.println("Ingrese nombre: ");
+		p.setNombre(s.nextLine());
+		System.out.println("Ingrese apellido: ");
+		p.setApellido(s.nextLine());
+		
+		System.out.println("Ingrese tipo de documento: ");
+		d.setTipo(s.nextLine());
+		System.out.println("Ingrese Nro de documento: ");
+		d.setNro(s.nextLine());
+		p.setDocumento(d);
+		
+		System.out.println("Ingrese email: ");
+		p.setEmail(s.nextLine());
+		System.out.println("Ingrese Nro de telefono: ");
+		p.setTel(s.nextLine());
+		System.out.println("Ingrese contraseña: ");
+		p.setPassword(s.nextLine());
+		
+		System.out.println("Ingrese 1 si se encuentra habilitado caso contrario ingrese 0: ");
+		String o = s.nextLine();
+		if (Integer.parseInt(o) == 1) {
+			p.setHabilitado(true);
+		}else {
+			p.setHabilitado(false);
+		}
+		
+		
+		System.out.println();
+		for (Rol roles : ctrlLogin.getRoles()) {
+			System.out.println(roles.toString());
+		}
+		System.out.println("Ingrese el rol para la persona (nro id): ");
+		Rol r = new Rol();
+		r.setId(s.nextInt());
+		r = ctrlLogin.getRolById(r);
+		p.addRol(r);
+		
+		return ctrlLogin.addPeople(p);
+	}
 }

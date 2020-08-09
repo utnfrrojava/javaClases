@@ -8,9 +8,11 @@ import entities.*;
 
 public class Login {
 	private DataPersona dp;
+	private DataRol dr;
 	
 	public Login() {
 		dp=new DataPersona();
+		dr= new DataRol();
 	}
 	
 	public Persona validate(Persona p) {
@@ -31,4 +33,14 @@ public class Login {
 	public ArrayList<Persona> getByApellido(String apell){
 		return dp.getByApellido(apell);
 	}
+	public LinkedList<Rol> getRoles(){
+		return dr.getAll();
+	}
+	public Rol getRolById(Rol r) {
+		return dr.getById(r);
+	}
+	public Persona addPeople (Persona p) {
+		return dp.add(p);
+	}
 }
+
