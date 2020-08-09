@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import data.*;
@@ -26,6 +27,8 @@ public class Login {
 
 	public Persona getByDocumento(Persona per) {
 		return dp.getByDocumento(per);
-		
+	}
+	public ArrayList<Persona> getByApellido(String apell){
+		return dp.getByApellido(apell);
 	}
 }

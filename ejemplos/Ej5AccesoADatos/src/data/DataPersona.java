@@ -3,6 +3,7 @@ package data;
 import entities.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DataPersona {
@@ -173,6 +174,49 @@ public class DataPersona {
             }
 		}
     }
+	
+	public ArrayList<Persona> getByApellido(String apell) {
+	DataRol dr=new DataRol();
+	ArrayList<Persona> pers = new ArrayList<Persona>();
+	PreparedStatement stmt=null;
+	ResultSet rs=null;
+	try {
+		stmt=DbConnector.getInstancia().getConn().prepareStatement(
+				"select id,nombre,apellido,tipo_doc,nro_doc,email,tel,habilitado from persona where apellido=? "
+				);
+		stmt.setString(1, apell);
+		rs=stmt.executeQuery();
+		if(rs!=null) {
+			while(rs.next()) {
+				Persona p=new Persona();
+				p.setDocumento(new Documento());
+				p.setId(rs.getInt("id"));
+				p.setNombre(rs.getString("nombre"));
+				p.setApellido(rs.getString("apellido"));
+				p.getDocumento().setTipo(rs.getString("tipo_doc"));
+				p.getDocumento().setNro(rs.getString("nro_doc"));
+				p.setEmail(rs.getString("email"));
+				p.setTel(rs.getString("tel"));
+				p.setHabilitado(rs.getBoolean("habilitado"));
+				//
+				dr.setRoles(p);
+				pers.add(p);
+			}
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if(rs!=null) {rs.close();}
+			if(stmt!=null) {stmt.close();}
+			DbConnector.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return pers;
+	}
 
 	
 }

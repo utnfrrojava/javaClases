@@ -1,6 +1,7 @@
 package ui;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import entities.*;
@@ -35,8 +36,8 @@ public class Menu {
 		case "find":
 			System.out.println(find());
 			break;
-		case "seach":
-	
+		case "search":
+			System.out.println(search());
 			break;
 		case "new":
 			
@@ -92,6 +93,15 @@ public class Menu {
 		d.setNro(s.nextLine());
 		
 		return ctrlLogin.getByDocumento(p);
+	}
+	
+	private ArrayList<Persona> search(){
+		System.out.println();
+		System.out.println("Ingrese apellido: ");
+		String apell = s.nextLine();
+		
+		return ctrlLogin.getByApellido(apell);
+		
 	}
 
 }
