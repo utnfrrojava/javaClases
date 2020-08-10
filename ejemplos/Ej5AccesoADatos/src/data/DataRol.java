@@ -103,6 +103,27 @@ public class DataRol {
 		return r;
 	}
 	
+	public void deleteRolPersona(Persona p) {
+		PreparedStatement stmt=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					  "delete from rol_persona where id_persona=?"
+					);
+			stmt.setInt(1, p.getId());
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public void setRolPersona(Persona p, Rol r) {
 		PreparedStatement stmt=null;
 		try {

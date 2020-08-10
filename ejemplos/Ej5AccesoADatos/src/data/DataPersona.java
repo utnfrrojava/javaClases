@@ -251,4 +251,30 @@ public class DataPersona {
 		
 		return p;
 	}
+
+	public void deletePersona(Persona p) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt = DbConnector.getInstancia().getConn()
+					.prepareStatement(
+							"delete from persona where tipo_doc=? and nro_doc=?"
+							
+					);
+			stmt.setString(1, p.getDocumento().getTipo());
+			stmt.setString(2, p.getDocumento().getNro());
+			stmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	}
 }

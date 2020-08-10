@@ -46,7 +46,8 @@ public class Menu {
 			System.out.println("Persona editada" + edit());
 			break;
 		case "delete":
-			
+			delete();
+			System.out.println("Persona eliminada");
 			break;
 		default:
 			break;
@@ -203,5 +204,18 @@ public class Menu {
 		}while(!c.equalsIgnoreCase("salir"));
 		return ctrlLogin.edit(p);
 		
+	}
+
+	private void delete() {
+		System.out.println();
+		Persona p = new Persona();
+		Documento d = new Documento();
+		System.out.println("Ingrese tipo de documento de la persona");
+		d.setTipo(s.nextLine());
+		System.out.println("Ingrese numero de documento de la persona");
+		d.setNro(s.nextLine());
+		p.setDocumento(d);
+		p = ctrlLogin.getByDocumento(p);
+		ctrlLogin.delete(p);
 	}
 }

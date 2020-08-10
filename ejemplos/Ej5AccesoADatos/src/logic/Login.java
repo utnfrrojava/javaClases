@@ -47,5 +47,9 @@ public class Login {
 	public Persona edit(Persona p) {
 		return dp.edit(p);
 	}
+	public void delete(Persona p) {
+		dr.deleteRolPersona(p);
+		dp.deletePersona(p);
+	}
 }
 
