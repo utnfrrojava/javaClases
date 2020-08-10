@@ -39,8 +39,13 @@ public class Login {
 	public Rol getRolById(Rol r) {
 		return dr.getById(r);
 	}
-	public Persona addPeople (Persona p) {
-		return dp.add(p);
+	public Persona addPeople (Persona p, Rol r) {
+		dp.add(p);
+		dr.setRolPersona(p, r);	
+		return p;
+	}
+	public Persona edit(Persona p) {
+		return dp.edit(p);
 	}
 }
 

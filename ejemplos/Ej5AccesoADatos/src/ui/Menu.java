@@ -43,7 +43,7 @@ public class Menu {
 			System.out.println("Persona agregada" + addPeople());
 			break;
 		case "edit":
-			
+			System.out.println("Persona editada" + edit());
 			break;
 		case "delete":
 			
@@ -147,6 +147,61 @@ public class Menu {
 		r = ctrlLogin.getRolById(r);
 		p.addRol(r);
 		
-		return ctrlLogin.addPeople(p);
+		return ctrlLogin.addPeople(p,r);
+	}
+	
+	private Persona edit() {
+		System.out.println();
+		Persona p = new Persona();
+		Documento d = new Documento();
+		System.out.println("Actualizar datos!");
+		System.out.println("Ingrese tipo de documento de la persona");
+		d.setTipo(s.nextLine());
+		System.out.println("Ingrese numero de documento de la persona");
+		d.setNro(s.nextLine());
+		p.setDocumento(d);
+		p = ctrlLogin.getByDocumento(p);
+		System.out.println("Datos a actualizar de " + p.getNombre() + p.getApellido());
+		String c; 
+		do {
+			System.out.println("---Seleccione---");
+			System.out.println("Nombre");
+			System.out.println("Apellido");
+			System.out.println("Email");
+			System.out.println("Telefono");
+			System.out.println("Habilitado");
+			System.out.println("Rol");
+			System.out.println("Salir");
+			c = s.nextLine();
+			switch (c) {
+			case "nombre":
+				System.out.println("Ingrese nombre: ");
+				p.setNombre(s.nextLine());
+				break;
+			case "apellido":
+				System.out.println("Ingrese apellido: ");
+				p.setApellido(s.nextLine());
+				break;
+			case "email":
+				System.out.println("Ingrese email: ");
+				p.setEmail(s.nextLine());
+				break;
+			case "telefono":
+				System.out.println("Ingrese Nro de telefono: ");
+				p.setTel(s.nextLine());
+				break;
+			case "habilitado":
+				if(p.isHabilitado()) {
+					p.setHabilitado(false);
+				}else {
+					p.setHabilitado(true);
+				};
+				break;
+			default:
+				break;
+			}
+		}while(!c.equalsIgnoreCase("salir"));
+		return ctrlLogin.edit(p);
+		
 	}
 }

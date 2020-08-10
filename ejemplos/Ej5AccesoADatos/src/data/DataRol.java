@@ -103,6 +103,27 @@ public class DataRol {
 		return r;
 	}
 	
+	public void setRolPersona(Persona p, Rol r) {
+		PreparedStatement stmt=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					  "insert into rol_persona(id_persona, id_rol) values(?,?)"
+					);
+			stmt.setInt(1, p.getId());
+			stmt.setInt(2, r.getId());
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public void setRoles(Persona per) {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
@@ -121,7 +142,7 @@ public class DataRol {
 					Rol r=new Rol();
 					r.setId(rs.getInt("id"));
 					r.setDescripcion(rs.getString("descripcion"));
-					per.addRol(r);;
+					per.addRol(r);
 				}
 			}
 			

@@ -146,6 +146,7 @@ public class DataPersona {
 							"insert into persona(nombre, apellido, tipo_doc, nro_doc, email, password, tel, habilitado) values(?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
+			
 			stmt.setString(1, p.getNombre());
 			stmt.setString(2, p.getApellido());
 			stmt.setString(3, p.getDocumento().getTipo());
@@ -157,9 +158,9 @@ public class DataPersona {
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
-            if(keyResultSet!=null && keyResultSet.next()){
-                p.setId(keyResultSet.getInt(1));
-            }
+			if(keyResultSet!=null && keyResultSet.next()){
+				p.setId(keyResultSet.getInt(1));
+			}
 
 			
 		}  catch (SQLException e) {
@@ -219,5 +220,35 @@ public class DataPersona {
 	return pers;
 	}
 
-	
+	public Persona edit(Persona p) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt = DbConnector.getInstancia().getConn()
+					.prepareStatement(
+							"update persona set nombre=?, apellido=?, email=?, tel=?, habilitado=? where tipo_doc=? and nro_doc=?" 
+					);
+			stmt.setString(1, p.getNombre());
+			stmt.setString(2, p.getApellido());
+			stmt.setString(3, p.getEmail());
+			stmt.setString(4, p.getTel());
+			stmt.setBoolean(5, p.isHabilitado());
+			stmt.setString(6, p.getDocumento().getTipo());
+			stmt.setString(7, p.getDocumento().getNro());
+			stmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		
+		return p;
+	}
 }
