@@ -16,7 +16,7 @@ ejemplos/Servers/
 *.db
 
 # Whitelist connector/j #
-!/ejemplos/*/lib/*.jar
+!/ejemplos/**/lib/*.jar
 
 ######################
 # Windows
