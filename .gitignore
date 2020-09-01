@@ -2,7 +2,7 @@
 /build/
 /bin/
 target/
-ejemplos/Ej11Email/resources/app.properties
+ejemplos/Servers/
 
 # OS Files #
 .DS_Store
