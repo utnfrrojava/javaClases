@@ -1,4 +1,4 @@
-# Lenguaje de Programación Java - TP Desarrollo 2020
+# Lenguaje de Programación Java - TP Desarrollo
 
 ## 1 - Enunciado
 

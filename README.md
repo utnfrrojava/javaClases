@@ -1,12 +1,12 @@
-# Java 2020
-Este repositorio corresponde a la cátedra de Java UTN FRRo cursada de 2020.
+# Java
+Este repositorio corresponde a la cátedra de Java UTN FRRo.
 
 Aquí podrán encontrar los ejemplos dictados en clase, ejercicios realizados en clase e información relacionada referente a cada tema y material útil relacionado.
 
 ## Grupo de Telegram
 Para notificaciones de último momento pueden utilizar el grupo de Telegram al cual se pueden sumar a través de los siguientes links
-* [Turno mañana](https://kutt.it/java2020tmchat).
-* [Turno tarde y noche](https://kutt.it/java2020ttnchat).
+* [Turno mañana](https://kutt.it/java2021tmchat).
+* [Turno tarde y noche](https://kutt.it/java2021ttnchat).
 
 
 Se recomienda el uso de [usernames](https://telegram.org/faq#usernames-and-t-me) para quienes quieran mantener su número telefónico privado.
