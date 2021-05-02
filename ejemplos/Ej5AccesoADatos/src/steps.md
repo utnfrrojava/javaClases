@@ -10,7 +10,7 @@ En caso que fallara la creación de la db o el usuario puede eliminarlps con el 
 
 ```sql
 DROP DATABASE `java`;
-DROP USEr java@localhost;
+DROP USEr java@'%';
 ```
 
 ## Pasos para setear el conector

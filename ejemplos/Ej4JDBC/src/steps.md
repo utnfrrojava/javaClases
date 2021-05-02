@@ -27,9 +27,9 @@ INSERT INTO `persona` VALUES (1,'dni',11111111,'John','Doe',1),(2,'dni',22222222
 * Crear el usuario para conectarse
 
 ```sql
-create user java@localhost identified by 'himitsu';
+create user java@'%' identified by 'himitsu';
 
-grant select, insert, update, delete on javaTest.* to java@localhost;
+grant select, insert, update, delete on javaTest.* to java@'%';
 ```
 
 ### En casos de falla
@@ -37,7 +37,7 @@ En caso que fallara la creación de la db o el usuario puede eliminarlps con el 
 
 ```sql
 DROP DATABASE `javaTest`;
-DROP USEr java@localhost;
+DROP USEr java@'%';
 ```
 
 ## Pasos para setear el conector
