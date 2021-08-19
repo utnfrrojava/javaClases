@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.*;
+import java.time.*;
 import java.util.LinkedList;
 
 import entities.Product;
@@ -13,6 +14,8 @@ public class DbHandler {
 	private String user="java";
 	private String password="himitsu";
 	private String db="javaMarket";
+	//private String options="?useLegacyDatetimeCode=false&serverTimezone=Asia/Hong_Kong";
+	private String options="";
 	
 	private Connection conn=null;
 	
@@ -27,7 +30,7 @@ public class DbHandler {
 	private Connection getConnection() {
 		try {
 			if(conn==null || conn.isClosed())
-			conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db, user, password);
+			conn=DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+options, user, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,6 +68,10 @@ public class DbHandler {
 				p.setPrice(rs.getDouble("price"));
 				p.setStock(rs.getInt("stock"));
 				p.setShippingIncluded(rs.getBoolean("shippingIncluded"));
+				p.setDisabledOn(rs.getObject("disabledOn",LocalDateTime.class));
+				p.setDisabledDate(rs.getObject("disabledDate",LocalDate.class));
+				p.setDisabledTime(rs.getObject("disabledTime",LocalTime.class));
+				p.setDisabledOnZoned(rs.getObject("disabledOnZoned",ZonedDateTime.class));
 				
 				prods.add(p);
 			}
@@ -109,6 +116,10 @@ public class DbHandler {
 				prod.setPrice(rs.getDouble("price"));
 				prod.setStock(rs.getInt("stock"));
 				prod.setShippingIncluded(rs.getBoolean("shippingIncluded"));
+				prod.setDisabledOn(rs.getObject("disabledOn",LocalDateTime.class));
+				prod.setDisabledDate(rs.getObject("disabledDate",LocalDate.class));
+				prod.setDisabledTime(rs.getObject("disabledTime",LocalTime.class));
+				prod.setDisabledOnZoned(rs.getObject("disabledOnZoned",ZonedDateTime.class));
 				
 			}
 			return prod;
@@ -137,14 +148,19 @@ public class DbHandler {
 		try {
 			conn=this.getConnection();
 			stmt = conn.prepareStatement(
-					"insert into product(name, description, price, stock, shippingIncluded) "+
-					"values(?,?,?,?,?)"
+					"insert into product(name, description, price, stock, shippingIncluded, disabledOn, disabledDate, disabledTime, disabledOnZoned) "+
+					"values(?,?,?,?,?,?,?,?,?)"
 					, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, newPrd.getName());
 			stmt.setString(2, newPrd.getDescription());
 			stmt.setDouble(3, newPrd.getPrice());
 			stmt.setInt(4, newPrd.getStock());
 			stmt.setBoolean(5, newPrd.isShippingIncluded());
+			stmt.setObject(6, newPrd.getDisabledOn()); 
+			stmt.setObject(7, newPrd.getDisabledDate());
+			stmt.setObject(8, newPrd.getDisabledTime());
+			stmt.setObject(9, newPrd.getDisabledOnZoned());
+			
 			
 			stmt.executeUpdate();
 			
@@ -201,13 +217,18 @@ public class DbHandler {
 			stmt = conn.prepareStatement(
 					"update product "+
 					"set name = ?, description = ?, price = ?, stock = ?, shippingIncluded = ? "+
+					",disabledOn = ?, disabledDate = ?, disabledTime = ?, disabledOnZoned = ? "+
 					"where id = ?");
 			stmt.setString(1, updPrd.getName());
 			stmt.setString(2, updPrd.getDescription());
 			stmt.setDouble(3, updPrd.getPrice());
 			stmt.setInt(4, updPrd.getStock());
 			stmt.setBoolean(5, updPrd.isShippingIncluded());
-			stmt.setInt(6, updPrd.getId());
+			stmt.setObject(6, updPrd.getDisabledOn());
+			stmt.setObject(7, updPrd.getDisabledDate());
+			stmt.setObject(8, updPrd.getDisabledTime());
+			stmt.setObject(9, updPrd.getDisabledOnZoned());
+			stmt.setInt(10, updPrd.getId());
 			
 			stmt.executeUpdate();
 			

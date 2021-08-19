@@ -1,5 +1,7 @@
 package ui;
 
+import java.time.format.DateTimeFormatter;
+import java.time.*;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -10,6 +12,10 @@ public class Menu {
 
 	Scanner scan = new Scanner(System.in);
 	DbProduct db = new DbProduct();
+
+	private String dateFormat="dd/MM/yyyy";
+	private String timeFormat="HH:mm:ss";
+	private String dateTimeFormat=dateFormat+" "+timeFormat;
 	
 	public void start() {
 		String rta=null;
@@ -101,6 +107,21 @@ public class Menu {
 		
 		System.out.print("Includes shipping (Y/N): ");
 		prd.setShippingIncluded(scan.nextLine().trim().equalsIgnoreCase("Y"));
+		
+		DateTimeFormatter dtFormat=DateTimeFormatter.ofPattern(dateTimeFormat) ;
+		System.out.print("Disabled on :");
+		prd.setDisabledOn(LocalDateTime.parse(scan.nextLine(), dtFormat));
+		
+		DateTimeFormatter dFormat=DateTimeFormatter.ofPattern(dateFormat) ;
+		System.out.print("Disabled date :");
+		prd.setDisabledDate(LocalDate.parse(scan.nextLine(), dFormat));
+		
+		DateTimeFormatter tFormat=DateTimeFormatter.ofPattern(timeFormat) ;
+		System.out.print("Disabled time :");
+		prd.setDisabledTime(LocalTime.parse(scan.nextLine(), tFormat));
+		
+		System.out.print("Disabled on zoned:");
+		prd.setDisabledOnZoned(ZonedDateTime.parse(scan.nextLine(), dtFormat.withZone(ZoneId.of("UTC-3"))));
 	}
 
 	private void search() {

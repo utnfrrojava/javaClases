@@ -1,5 +1,7 @@
 package ui;
 
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import data.DbHandler;
@@ -9,6 +11,9 @@ public class Menu {
 
 	private Scanner scan;
 	private DbHandler db=new DbHandler();
+	private String dateFormat = "dd/MM/yyyy";
+	private String timeFormat = "HH:mm:ss";
+	private String dateTimeFormat = dateFormat + " "+timeFormat;
 	public void start() {
 		
 		
@@ -101,6 +106,21 @@ public class Menu {
 		
 		System.out.print("Include Shipping? (Y/N): ");
 		prd.setShippingIncluded(scan.nextLine().trim().equalsIgnoreCase("Y"));
+		
+		DateTimeFormatter dtFormat = DateTimeFormatter.ofPattern(dateTimeFormat);
+		System.out.print("Disabled On ("+dateTimeFormat+"): ");
+		prd.setDisabledOn(LocalDateTime.parse(scan.nextLine(), dtFormat) );
+		
+		DateTimeFormatter dFormat = DateTimeFormatter.ofPattern(dateFormat);
+		System.out.print("Disabled Date ("+dateFormat+"): ");
+		prd.setDisabledDate(LocalDate.parse(scan.nextLine(), dFormat) );
+		
+		DateTimeFormatter tFormat = DateTimeFormatter.ofPattern(timeFormat);
+		System.out.print("Disabled Time ("+timeFormat+"): ");
+		prd.setDisabledTime(LocalTime.parse(scan.nextLine(), tFormat) );
+		
+		System.out.print("Disabled On Zoned("+dateTimeFormat+"): ");
+		prd.setDisabledOnZoned(ZonedDateTime.parse(scan.nextLine(), dtFormat.withZone(ZoneId.of("UTC-3"))) );
 	}
 
 	private String menu() {
