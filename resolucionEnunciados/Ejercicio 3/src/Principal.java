@@ -7,7 +7,7 @@ public class Principal {
 		Scanner lector = new Scanner(System.in);
 		ArrayList<String> words = new ArrayList<>();
 		
-		for(int i=1; i<=3; i++) {
+		for(int i=1; i<=10; i++) {
 			System.out.println("Ingrese la palabra numero: "+i+" -> ");
 			words.add(lector.nextLine());
 		}
