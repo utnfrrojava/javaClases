@@ -16,6 +16,8 @@ public class Principal {
 		for(int i=9; i>=0; i--) {
 			System.out.println(words.get(i));
 		}
+		
+		lector.close();
 
 	}
 
