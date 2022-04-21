@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Principal {
@@ -9,17 +8,22 @@ public class Principal {
 		int keyNumber = Integer.parseInt(lector.nextLine());
 		
 		
-		ArrayList<Integer> numbers = new ArrayList<>();
+		Integer[] numbers = new Integer[20];
 		
-		for(int i=1; i<=20; i++) {
-			System.out.println("Ingrese el numero: "+i+" -> ");
+		for(int i=0; i<20; i++) {
+			System.out.println("Ingrese el numero: "+(i+1)+" -> ");
 			int number = Integer.parseInt(lector.nextLine());
 			if (number > keyNumber) {
-				numbers.add(number);
+				numbers[i] = number;
 			}
 		}
 		
-		System.out.println("Los numeros mayores a "+keyNumber+" son: "+numbers);
+		System.out.println("Los numeros mayores a "+keyNumber+" son: ");
+		for(int i=0; i<20; i++) {
+			if (numbers[i] != null) {
+				System.out.println(numbers[i]);				
+			}
+		}
 		lector.close();
 	}
 
