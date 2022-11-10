@@ -1,7 +1,7 @@
 # JDBC - Pasos para setear y configurar jdbc
 
 ## Pasos para preparar la base de datos
-* Descargar e instalar mysql o uno de sus forks (mysql 8 o 5.7, mariadb 10.3, percona server 8 o 5.7)
+* Descargar e instalar mysql o uno de sus forks (mysql 8, mariadb 10.5, percona server 8)
 * Crear la base de datos java con usando el código del archivo db/dbJava.sql del proyecto.
 * Crear el usuario java para conectarse usando el código del archivo db/userJava.sql del proyecto.
 
