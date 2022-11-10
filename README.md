@@ -18,7 +18,7 @@ El detalle de las condiciones, requerimientos, criterio de evaluación y entrega
 Aquí se agregará un link a la planilla de seguimiento de la condición de cada alumno.
 
 ## Sistema Final
-Para conocer las condiciones del sistema final referirse al [repositorio general](https://github.com/utnfrrojava/java).
+Las condiciones del sistema final de la materia pueden encontrarse en [este link](https://goo.gl/BifevO).
 
 ## Links a tutoriales
 El archivo [recursos.md](https://github.com/utnfrrojava/java/blob/master/material/recursos.md) contiene links a muchos tutoriales tanto de java como de desarrollo web.
