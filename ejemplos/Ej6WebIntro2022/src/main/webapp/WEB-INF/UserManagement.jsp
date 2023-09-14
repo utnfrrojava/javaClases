@@ -34,6 +34,9 @@
 <body>
 	<div class="container">
 		<div class="row">
+			Hola <%=p.getNombre()%>
+		</div> <!-- row -->
+		<div class="row">
         	<h4>Personas</h4>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
@@ -68,7 +71,11 @@
                     				<td></td><!-- borrar -->
                     			</tr>
                     		<% } %>
-                    		</tbody>	
+                    		</tbody>
+        				</table>
+       				</div> <!-- /table-responsive -->
+     			</div> <!-- <div class="col-12 col-sm-12 col-lg-12"> -->
+     	</div> <!-- row -->
 	</div> <!-- /container -->
 </body>
 </html>
