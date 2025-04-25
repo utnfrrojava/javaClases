@@ -9,8 +9,8 @@
 En caso que fallara la creación de la db o el usuario puede eliminarlps con el siguiente código y volver a intentarlo.
 
 ```sql
-DROP DATABASE `java`;
-DROP USEr java@'%';
+DROP DATABASE IF EXISTS `java`;
+DROP USER IF EXISTS java@'%';
 ```
 
 ## Pasos para setear el conector
